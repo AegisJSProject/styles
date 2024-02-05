@@ -7,5 +7,3 @@ export const purple = ['#dc8add', '#c061cb', '#9141ac', '#813d9c', '#613583'];
 export const brown = ['#cdab8f', '#b5835a', '#986a44', '#865e3c', '#63452c'];
 export const light = ['#ffffff', '#f6f5f4', '#deddda', '#c0bfbc', '#9a9996'];
 export const dark = ['#77767b', '#5e5c64', '#3d3846', '#241f31', '#000000'];
-
-
