@@ -1,4 +1,4 @@
-import { light, dark } from './palette/js';
+import { light, dark } from './palette/bootstrap.js';
 import { css, darkCSS, lightCSS } from '@shgysk8zer0/aegis';
 
 export const baseTheme = css`:root {
