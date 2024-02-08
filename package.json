@@ -1,6 +1,6 @@
 {
   "name": "@shgysk8zer0/aegis-styles",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Pre-made and reusable styles for `@shgysk8zer0/aegis`",
   "keywords": [
     "aegis",
@@ -82,6 +82,6 @@
     "rollup": "^4.9.6"
   },
   "dependencies": {
-    "@shgysk8zer0/aegis": "^0.0.4"
+    "@shgysk8zer0/aegis": "^0.0.5"
   }
 }
