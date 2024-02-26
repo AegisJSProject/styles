@@ -82,6 +82,6 @@
     "rollup": "^4.9.6"
   },
   "dependencies": {
-    "@shgysk8zer0/aegis": "^0.0.7"
+    "@shgysk8zer0/aegis": "^0.0.8"
   }
 }
