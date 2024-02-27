@@ -1,4 +1,4 @@
-import { css } from '@shgysk8zer0/aegis';
+import { css } from '@aegisjsproject/core/core.js';
 
 export const reset = css`body {
 	margin: 0;

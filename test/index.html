@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="color-scheme" content="light dark" />
+		<meta http-equiv="Content-Security-Policy"
+			content="default-src 'none';
+			script-src 'self' https://unpkg.com/@shgysk8zer0/ https://unpkg.com/@aegisjsproject/ 'sha384-RT8/jXa3tV8Aauh9mL7PPogrsOeGCZNnM+GYKnXiACl8RUsAuyPtexdx/oXkKHDj';
+			style-src 'self' blob: data:;
+			connect-src https://icanhazdadjoke.com https://unpkg.com/@shgysk8zer0/ https://unpkg.com/@kernvalley/;
+			trusted-types empty#html empty#script sanitizer-raw#html default;
+			require-trusted-types-for 'script';" />
+		<title>Aegis Styles Test</title>
+		<script type="importmap" integrity="sha384-RT8/jXa3tV8Aauh9mL7PPogrsOeGCZNnM+GYKnXiACl8RUsAuyPtexdx/oXkKHDj">
+			{
+				"imports": {
+					"@aegisjsproject/core": "../node_modules/@aegisjsproject/core/core.js",
+					"@aegisjsproject/core/": "../node_modules/@aegisjsproject/core/",
+					"@aegisjsproject/styles": "../styles.js",
+					"@aegisjsproject/styles/": "../",
+					"@shgysk8zer0/": "https://unpkg.com/@shgysk8zer0/",
+					"@kernvalley/": "https://unpkg.com/@kernvalley/",
+					"@aegisjsproject/": "https://unpkg.com/@aegisjsproject/"
+				}
+			}
+		</script>
+		<script type="application/javascript" defer="" referrerpolicy="no-referrer" crossorigin="anonymous" integrity="sha384-Shkrmxly5RI9mCU8DQr6l4VLVJzjPzgx9KP/f5i7pEcl7ZUt0wHiAweGjbpjU2d5" src="https://unpkg.com/@shgysk8zer0/polyfills@0.3.1/all.min.js" fetchpriority="auto"></script>
+		<script type="application/javascript" defer="" referrerpolicy="no-referrer" crossorigin="anonymous" integrity="sha384-55L/wO9o0uIVTeubRIDQB4bewfNqyxrj4OXuxlW24NMEk+ioZwMHVw/tFV78mM+k" src="https://unpkg.com/@shgysk8zer0/kazoo@0.3.1/harden.js" fetchpriority="auto"></script>
+		<script type="module" referrerpolicy="no-referrer" src="./index.js"></script>
+	</head>
+	<body>
+		<button type="button" id="toggle" class="btn btn-primary">Toggle Theme</button>
+		<p>The Current Theme is: <span id="cur">auto</span>.</p>
+	</body>
+</html>
