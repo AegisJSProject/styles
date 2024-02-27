@@ -1,4 +1,4 @@
-import { css } from '@shgysk8zer0/aegis';
+import { css } from '@aegisjsproject/core/core.js';
 import { primary, blue, light } from './palette/bootstrap.js';
 
 export const btn = css`.btn:not([hidden]) {

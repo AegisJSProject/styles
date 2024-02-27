@@ -1,6 +1,9 @@
 export function sheetToFile(sheet, { filename = 'styles.css' } = {}) {
-	return new File(Array.from(sheet.rules)
-		.map(rule => rule.cssText), filename, { type: 'text/css' });
+	return new File(
+		Array.from(sheet.rules, rule => rule.cssText),
+		filename,
+		{ type: 'text/css' }
+	);
 }
 
 export async function sheetToLink(sheet, {
