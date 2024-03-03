@@ -1,5 +1,5 @@
 import { light, dark } from './palette/bootstrap.js';
-import { css, darkCSS, lightCSS } from '@aegisjsproject/core/core.js';
+import { css, darkCSS, lightCSS } from '@aegisjsproject/core/parsers/css.js';
 
 export const baseTheme = css`:root {
 	color-scheme: light dark;
