@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.1.1] - 2024-03-02
+
+### Changed
+- Update to `@aegisjsproject/core@0.1.2`
+
+### Fixed
+- Fix building and exporting CommonJS
+
 ## [v0.1.0] - 2023-02-27
 
 ### Changed
