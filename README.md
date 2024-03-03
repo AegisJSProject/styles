@@ -13,7 +13,7 @@ Pre-made and reusable styles for [`@aegisjsproject/core`](https://github.com/Aeg
 
 [![npm](https://img.shields.io/npm/v/@aegisjsproject/styles)](https://www.npmjs.com/package/@aegisjsproject/styles)
 ![node-current](https://img.shields.io/node/v/@aegisjsproject/styles)
-![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/%40aegisjsproject%2Fstyles)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/%40aegisjsproject%2Fstyles)
 [![npm](https://img.shields.io/npm/dw/@aegisjsproject/styles?logo=npm)](https://www.npmjs.com/package/@aegisjsproject/styles)
 
 [![GitHub followers](https://img.shields.io/github/followers/shgysk8zer0.svg?style=social)](https://github.com/shgysk8zer0)
