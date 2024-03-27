@@ -91,6 +91,6 @@
     "rollup": "^4.9.6"
   },
   "dependencies": {
-    "@aegisjsproject/core": "^0.1.2"
+    "@aegisjsproject/core": "^0.2.0"
   }
 }
