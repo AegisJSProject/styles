@@ -31,6 +31,12 @@
 	</head>
 	<body>
 		<button type="button" id="toggle" class="btn btn-primary">Toggle Theme</button>
+		<button type="button" popovertarget="popover" popovertargetaction="toggle" class="btn btn-primary">Toggle Popover</button>
 		<p>The Current Theme is: <span id="cur">auto</span>.</p>
+		<test-el popover="auto" id="popover"></test-el>
+		<test-el></test-el>
+		<test-el theme="light"></test-el>
+		<test-el theme="dark"></test-el>
+		<test-el hidden=""></test-el>
 	</body>
 </html>
