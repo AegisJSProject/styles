@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.1.3] - 2024-09-26
+
 ### Added
 - Begin adding custom properties
 - Add `@properties` via `properties.js`
