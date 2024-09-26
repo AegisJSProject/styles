@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Begin adding custom properties
+- Add `@properties` via `properties.js`
+- Add theme inheritance via `:host-context()` (where supported)
+
+### Fixed
+- Do not set `display` for `hidden` or `popover` elements
+
 ## [v0.1.2] - 2024-09-19
 
 ### Changed
