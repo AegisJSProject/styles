@@ -1,0 +1,32 @@
+import {
+	colorLight, colorDark, bgLight, bgDark, borderLight, borderDark, btnPrimary, btnPrimaryActive,
+	btnPrimaryHover, btnDisabled, btnSuccess, btnSuccessActive, btnSuccessHover, btnDanger, btnDangerActive,
+	btnDangerHover, btnWarning, btnWarningActive, btnWarningHover,
+} from './palette/aegis.js';
+
+export const customProperties = {
+	'font': { initialValue: 'system-ui', syntax: '<custom-ident> | <string>' },
+	'color-light': { initialValue: colorLight, syntax: '<color>' },
+	'color-dark': { initialValue: colorDark, syntax: '<color>' },
+	'bg-light': { initialValue: bgLight, syntax: '<color>' },
+	'bg-dark': { initialValue: bgDark, syntax: '<color>' },
+	'border-color-light': { initialValue: borderLight, syntax: '<color>' },
+	'border-color-dark': { initialValue: borderDark, syntax: '<color>' },
+	'border-radius': { initialValue: '8px', syntax: '<length>' },
+	'btn-primary': { initialValue: btnPrimary, syntax: '<color>' },
+	'btn-primary-hover': { initialValue: btnPrimaryHover, syntax: '<color>' },
+	'btn-primary-active': { initialValue: btnPrimaryActive, syntax: '<color>' },
+	'btn-primary-disabled': { initialValue: btnDisabled, syntax: '<color>' },
+	'btn-danger': { initialValue: btnDanger, syntax: '<color>' },
+	'btn-danger-hover': { initialValue: btnDangerHover, syntax: '<color>' },
+	'btn-danger-active': { initialValue: btnDangerActive, syntax: '<color>' },
+	'btn-danger-disabled': { initialValue: btnDisabled, syntax: '<color>' },
+	'btn-success': { initialValue: btnSuccess, syntax: '<color>' },
+	'btn-success-hover': { initialValue: btnSuccessHover, syntax: '<color>' },
+	'btn-success-active': { initialValue: btnSuccessActive, syntax: '<color>' },
+	'btn-success-disabled': { initialValue: btnDisabled, syntax: '<color>' },
+	'btn-warning': { initialValue: btnWarning, syntax: '<color>' },
+	'btn-warning-hover': { initialValue: btnWarningHover, syntax: '<color>' },
+	'btn-warning-active': { initialValue: btnWarningActive, syntax: '<color>' },
+	'btn-warning-disabled': { initialValue: btnDisabled, syntax: '<color>' },
+};

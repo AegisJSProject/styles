@@ -1,7 +1,17 @@
-import { btn, reset, baseTheme, darkTheme, lightTheme, componentBase, componentDarkTheme, componentLightTheme, properties, bootstrap } from '@aegisjsproject/styles';
 import { addStyles, css } from '@aegisjsproject/core';
+import {
+	btn, btnPrimary, btnSuccess, btnDanger, btnWarning, reset, baseTheme, darkTheme,
+	lightTheme, componentBase, componentBorder, registerProperties, customProperties,
+	componentDarkTheme, componentLightTheme, properties,
+} from '@aegisjsproject/styles';
 
-addStyles(document, properties, btn, reset, baseTheme, darkTheme, lightTheme);
+const result = registerProperties(customProperties);
+
+if (result instanceof Error) {
+	console.error(result);
+}
+
+addStyles(document, btn, btnPrimary, btnSuccess, btnDanger, btnWarning, reset, baseTheme, darkTheme, lightTheme);
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
@@ -48,11 +58,9 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 		slot.name = 'content';
 		slot.textContent = 'Hello, World!';
 		this.#shadow.adoptedStyleSheets = [
-			componentBase, componentDarkTheme, componentLightTheme, btn, reset,
+			componentBase, componentBorder, componentDarkTheme, componentLightTheme, btn, reset,
 			css`:host {
 				padding: 0.7em 0.3em;
-				border: 1px solid ${bootstrap.gray[5]};
-				border-radius: 8px;
 				width: max-content;
 				margin: 8px;
 			}`

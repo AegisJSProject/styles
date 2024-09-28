@@ -42,3 +42,51 @@ export async function sheetToLink(sheet, {
 
 	return link;
 }
+
+export function registerProperties(props) {
+	if (! (CSS.registerProperty instanceof Function)) {
+		return new Error('`CSS.registerProperty` is not supported.');
+	} else {
+		const errs = [];
+
+		Object.entries(props).forEach(([name, { initialValue, syntax = '*', inherits = true }]) => {
+			try {
+				CSS.registerProperty({ name: `--aegis-${name}`, syntax, initialValue, inherits });
+			} catch(err) {
+				errs.push(err);
+			}
+		});
+
+		switch(errs.length) {
+			case 0: return null;
+			case 1: return errs[0];
+			default: return new AggregateError(errs, 'Error registering custom properties.');
+		}
+	}
+}
+
+export const parseHex = hex => Uint8Array.fromHex(hex.substring(1));
+
+export function clamp(min, value, max) {
+	return Math.max(min, Math.min(value, max));
+}
+
+export function grayscale(hex, factor = 1) {
+	const [r, g, b] = parseHex(hex);
+	const grayness = Math.round((0.3 * r) + (0.59 * g) + (0.11 * b));
+
+	return '#' + Uint8Array.from(
+		[r, g, b],
+		n => Math.round(clamp(0, (n * (1 - factor)) + (grayness * factor), 255))
+	).toHex();
+}
+
+export function adjustBrightness(hex, delta) {
+	const [r, g, b] = parseHex(hex);
+
+	return '#' + new Uint8Array([
+		clamp(0, r + delta, 255),
+		clamp(0, g + delta, 255),
+		clamp(0, b + delta, 255)
+	]).toHex();
+}
