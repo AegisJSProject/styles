@@ -1,26 +1,12 @@
-import { light, dark } from './palette/bootstrap.js';
 import { css } from '@aegisjsproject/core/parsers/css.js';
+import { customProperties } from './consts.js';
 
-export const properties = css`@property --aegis-color-light {
-	syntax: "<color>";
-	inherits: true;
-	initial-value: ${dark};
-  }
+export const properties = css`${Object.entries(customProperties).map(
+	([name, { initialValue, inherits = true, syntax = '*' }]) => `@property --aegis-${name} {
+		syntax: "${syntax}";
+		inherits: ${inherits};
+		initial-value: ${initialValue};
+	}`
+).join('\n\n')}`;
 
-  @property --aegis-color-dark {
-	syntax: "<color>";
-	inherits: true;
-	initial-value: ${light};
-  }
-
-  @property --aegis-bg-light {
-	syntax: "<color>";
-	inherits: true;
-	initial-value: ${light};
-  }
-
-  @property --aegis-bg-dark {
-	syntax: "<color>";
-	inherits: true;
-	initial-value: ${dark};
-  }`;
+console.log(customProperties);
