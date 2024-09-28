@@ -1,17 +1,10 @@
 import { addStyles, css } from '@aegisjsproject/core';
 import {
 	btn, btnPrimary, btnSuccess, btnDanger, btnWarning, reset, baseTheme, darkTheme,
-	lightTheme, componentBase, componentBorder, registerProperties, customProperties,
-	componentDarkTheme, componentLightTheme, properties,
+	lightTheme, componentBase, componentBorder, componentDarkTheme, componentLightTheme, properties,
 } from '@aegisjsproject/styles';
 
-const result = registerProperties(customProperties);
-
-if (result instanceof Error) {
-	console.error(result);
-}
-
-addStyles(document, btn, btnPrimary, btnSuccess, btnDanger, btnWarning, reset, baseTheme, darkTheme, lightTheme);
+addStyles(document, properties, btn, btnPrimary, btnSuccess, btnDanger, btnWarning, reset, baseTheme, darkTheme, lightTheme);
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
