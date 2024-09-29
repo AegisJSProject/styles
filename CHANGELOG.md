@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.1] - 2024-09-29
+
+### Added
+- Add more `.btn-*` classes
+- More custom properties to go along
+
+### Changed
+- Now use `.btn-lg` instead of `.btn-big` and `.btn-sm` instead of `.btn-small`
+
+### Fixed
+- Fix typeo in `.grid` (had `.drid` somehow)
+
 ## [v0.2.0] - 2024-09-27
 
 ### Added
