@@ -20,7 +20,7 @@ export const displays = css`.block:not([hidden]):not([popover]) {
 	display: inline-flex;
 }
 
-.drid:not([hidden]):not([popover]) {
+.grid:not([hidden]):not([popover]) {
 	display: grid;
 }
 

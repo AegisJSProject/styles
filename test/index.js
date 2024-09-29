@@ -1,10 +1,11 @@
 import { addStyles, css } from '@aegisjsproject/core';
 import {
-	btn, btnPrimary, btnSuccess, btnDanger, btnWarning, reset, baseTheme, darkTheme,
+	btn, btnPrimary, btnSecondary, btnSuccess, btnInfo, btnDanger, btnWarning, reset, baseTheme, darkTheme,
 	lightTheme, componentBase, componentBorder, componentDarkTheme, componentLightTheme, properties,
+	btnLight, btnDark, btnLink,
 } from '@aegisjsproject/styles';
 
-addStyles(document, properties, btn, btnPrimary, btnSuccess, btnDanger, btnWarning, reset, baseTheme, darkTheme, lightTheme);
+addStyles(document, properties, btn, btnPrimary, btnSecondary, btnSuccess, btnInfo, btnDanger, btnWarning, reset, baseTheme, darkTheme, lightTheme, btnLight, btnDark, btnLink);
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
@@ -60,4 +61,13 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 		];
 		this.#shadow.append(slot);
 	}
+});
+
+const btns = document.getElementById('btns');
+['primary', 'secondary', 'success','info', 'warning', 'danger', 'light', 'dark', 'link'].forEach(t => {
+	const btn = document.createElement('button');
+	btn.classList.add('btn', 'btn-lg', 'btn-block', `btn-${t}`);
+	btn.type = 'button';
+	btn.textContent = t;
+	btns.append(btn);
 });

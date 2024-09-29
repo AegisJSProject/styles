@@ -8,5 +8,3 @@ export const properties = css`${Object.entries(customProperties).map(
 		initial-value: ${initialValue};
 	}`
 ).join('\n\n')}`;
-
-console.log(customProperties);
