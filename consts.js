@@ -4,6 +4,7 @@ import {
 	btnDangerHover, btnWarning, btnWarningActive, btnWarningHover, btnSecondary, btnSecondaryHover,
 	btnSecondaryActive, btnInfo, btnInfoHover, btnInfoActive, btnDark, btnDarkHover, btnDarkActive,
 	btnLightActive, btnLightHover, btnLight, btnLink, btnLinkHover, btnLinkActive, linkColor,
+	scrollbarColor, scrollbarTrack,
 } from './palette/aegis.js';
 
 export const customProperties = {
@@ -52,4 +53,12 @@ export const customProperties = {
 	'btn-link-active': { initialValue: btnLinkActive, syntax: '<color>' },
 	'btn-link-disabled': { initialValue: btnDisabled, syntax: '<color>' },
 	'link-color': { initialValue: linkColor, syntax: '<color>' },
+	'scrollbar-color': { initialValue: scrollbarColor, syntax: '<color>' },
+	'scrollbar-track': { initialValue: scrollbarTrack, syntax: '<color>' },
+	'scrollbar-width': { initialValue: 'auto', syntax: '<custom-ident>' },
+	'blink-speed': { initialValue: '200ms', syntax: '<time>' },
+	'fast-speed': { initialValue: '400ms', syntax: '<time>' },
+	'normal-speed': { initialValue: '600ms', syntax: '<time>' },
+	'slow-speed': { initialValue: '800ms', syntax: '<time>' },
+	'crawl-speed': { initialValue: '1200ms', syntax: '<time>' },
 };

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.2] - 2024-10-04
+
+### Added
+- Add animations/transforms and scrollbar stylesheets
+- More custom properties
+
 ## [v0.2.1] - 2024-09-29
 
 ### Added
