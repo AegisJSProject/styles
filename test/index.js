@@ -1,11 +1,7 @@
-import { addStyles, css } from '@aegisjsproject/core';
-import {
-	btn, btnPrimary, btnSecondary, btnSuccess, btnInfo, btnDanger, btnWarning, reset, baseTheme, darkTheme,
-	lightTheme, componentBase, componentBorder, componentDarkTheme, componentLightTheme, properties,
-	btnLight, btnDark, btnLink,
-} from '@aegisjsproject/styles';
+import { css } from '@aegisjsproject/core';
+const { componentBase, componentBorder, componentDarkTheme, componentLightTheme, btn, reset, ...styles } = await import('@aegisjsproject/styles');
 
-addStyles(document, properties, btn, btnPrimary, btnSecondary, btnSuccess, btnInfo, btnDanger, btnWarning, reset, baseTheme, darkTheme, lightTheme, btnLight, btnDark, btnLink);
+document.adoptedStyleSheets = [btn, reset, ...Object.values(styles).filter(mod => mod instanceof CSSStyleSheet)];
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
@@ -64,6 +60,7 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 });
 
 const btns = document.getElementById('btns');
+
 ['primary', 'secondary', 'success','info', 'warning', 'danger', 'light', 'dark', 'link'].forEach(t => {
 	const btn = document.createElement('button');
 	btn.classList.add('btn', 'btn-lg', 'btn-block', `btn-${t}`);
