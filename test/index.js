@@ -1,7 +1,9 @@
 import { css } from '@aegisjsproject/core';
-const { componentBase, componentBorder, componentDarkTheme, componentLightTheme, btn, reset, ...styles } = await import('@aegisjsproject/styles');
+const { properties, propertiesLegacy, componentBase, componentBorder, componentDarkTheme, componentLightTheme, btn, reset, sheetToLink, ...styles } = await import('@aegisjsproject/styles');
 
-document.adoptedStyleSheets = [btn, reset, ...Object.values(styles).filter(mod => mod instanceof CSSStyleSheet)];
+document.head.append(await sheetToLink(propertiesLegacy));
+
+document.adoptedStyleSheets = [btn, reset, properties, ...Object.values(styles).filter(mod => mod instanceof CSSStyleSheet)];
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
@@ -61,7 +63,11 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 
 const btns = document.getElementById('btns');
 
-['primary', 'secondary', 'success','info', 'warning', 'danger', 'light', 'dark', 'link'].forEach(t => {
+[
+	'primary','outline-primary', 'secondary', 'outline-secondary', 'success', 'outline-success', 'info', 'outline-info',
+	'warning', 'outline-warning', 'danger', 'outline-danger', 'light', 'outline-light', 'dark',
+	'outline-dark' ,'link',
+].forEach(t => {
 	const btn = document.createElement('button');
 	btn.classList.add('btn', 'btn-lg', 'btn-block', `btn-${t}`);
 	btn.type = 'button';

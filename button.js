@@ -38,210 +38,394 @@ export const btn = css`.btn:not([hidden]) {
 .btn.btn-block {
 	display: block;
 	width: 100%;
+}
+
+.btn:disabled, .btn.disabled {
+	cursor: not-allowed;
+	opacity: var(--aegis-btn-disabled-opacity, 0.65);
+	filter: saturate(var(--aegis-btn-disabled-saturation, 50%)) brightness(var(--aegis-btn-disabled-brightness, 90%));
+}
+
+.btn.disabled {
+	pointer-events: none;
 }`;
 
-const primary = css`.btn.btn-primary:not(:disabled):not(.disabled) {
+const primary = css`.btn.btn-primary {
 	background-color: var(--aegis-btn-primary, ${btnPrimary});
 	color: var(--aegis-color-dark, ${colorDark});
 	border-color: ${blue[6]};
 }
 
-.btn.btn-primary:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):focus {
+.btn.btn-primary:hover, .btn.btn-primary:focus {
 	background-color: var(--aegis-btn-primary-hover, ${btnPrimaryHover});
 	border-color: ${blue[7]};
 }
 
-.btn.btn-primary:not(:disabled):not(.disabled):active {
+.btn.btn-primary:active {
 	background-color: var(--aegis-btn-primary-active, ${btnPrimaryActive});
 	border-color: ${blue[8]};
 }
 
-.btn.btn-primary:disabled, .btn.btn-primary.disabled {
+x.btn.btn-primary:disabled, .btn.btn-primary.disabled {
 	background-color: var(--aegis-btn-active-disabled, ${btnDisabled});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[6]};
-	cursor: not-allowed;
 }`;
 
-const secondary = css`.btn.btn-secondary:not(:disabled):not(.disabled) {
+export const btnOutlinePrimary = css`.btn.btn-outline-primary {
+	background-color: transparent;
+	color: var(--aegis-btn-primary, ${btnPrimary});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-primary:hover, .btn.btn-outline-primary:focus {
+	background-color: var(--aegis-btn-primary-hover, ${btnPrimaryHover});
+	border-color: ${blue[7]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-primary:active {
+	background-color: var(--aegis-btn-primary-active, ${btnPrimaryActive});
+	border-color: ${blue[8]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+x.btn.btn-outline-primary:disabled, .btn.btn-outline-primary.disabled {
+	color: var(--aegis-btn-active-disabled, ${btnDisabled});
+}`;
+
+const secondary = css`.btn.btn-secondary {
 	background-color: var(--aegis-btn-secondary, ${btnSecondary});
 	color: var(--aegis-color-dark, ${colorDark});
 	border-color: ${gray[7]};
 }
 
-.btn.btn-secondary:not(:disabled):not(.disabled):hover, .btn.btn-secondary:not(:disabled):not(.disabled):focus {
+.btn.btn-secondary:hover, .btn.btn-secondary:focus {
 	background-color: var(--aegis-btn-secondary-hover, ${btnSecondaryHover});
 	border-color: ${gray[8]};
 }
 
-.btn.btn-secondary:not(:disabled):not(.disabled):active {
+.btn.btn-secondary:active {
 	background-color: var(--aegis-btn-secondary-active, ${btnSecondaryActive});
 	border-color: ${gray[9]};
 }
 
-.btn.btn-secondary:disabled, .btn.btn-secondary.disabled {
+x.btn.btn-secondary:disabled, .btn.btn-secondary.disabled {
 	background-color: var(--aegis-btn-active-disabled, ${btnDisabled});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[6]};
-	cursor: not-allowed;
 }`;
 
-const success = css`.btn.btn-success:not(:disabled):not(.disabled) {
+export const btnOutlineSecondary = css`.btn.btn-outline-secondary {
+	background-color: transparent;
+	color: var(--aegis-btn-secondary, ${btnSecondary});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-secondary:hover, .btn.btn-outline-secondary:focus {
+	background-color: var(--aegis-btn-secondary-hover, ${btnSecondaryHover});
+	border-color: ${gray[8]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-secondary:active {
+	background-color: var(--aegis-btn-secondary-active, ${btnSecondaryActive});
+	border-color: ${gray[9]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+	color: var(--aegis-btn-active-disabled, ${btnDisabled});
+}`;
+
+const success = css`.btn.btn-success {
 	background-color: var(--aegis-btn-success, ${btnSuccess});
 	color: var(--aegis-color-dark, ${colorDark});
 	border-color: ${green[6]};
 }
 
-.btn.btn-success:not(:disabled):not(.disabled):hover, .btn.btn-success:not(:disabled):not(.disabled):focus {
+.btn.btn-success:hover, .btn.btn-success:focus {
 	background-color: var(--aegis-btn-success-hover, ${btnSuccessHover});
 	border-color: ${green[7]};
 }
 
-.btn.btn-success:not(:disabled):not(.disabled):active {
+.btn.btn-success:active {
 	background-color: var(--aegis-btn-success-active, ${btnSuccessActive});
 	border-color: ${green[8]};
 }
 
-.btn.btn-success:disabled {
+x.btn.btn-success:disabled {
 	background-color: var(--aegis-btn-active-disabled, ${btnDisabled});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[6]};
 	cursor: not-allowed;
 }`;
 
-const info = css`.btn.btn-info:not(:disabled):not(.disabled) {
+export const btnOutlineSuccess = css`.btn.btn-outline-success {
+	background-color: transparent;
+	color: var(--aegis-btn-success, ${btnSuccess});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-success:hover, .btn.btn-outline-success:focus {
+	background-color: var(--aegis-btn-success-hover, ${btnSuccessHover});
+	border-color: ${green[7]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-success:active {
+	background-color: var(--aegis-btn-success-active, ${btnSuccessActive});
+	border-color: ${green[8]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+x.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+	color: var(--aegis-btn-active-disabled, ${btnDisabled});
+}`;
+
+const info = css`.btn.btn-info {
 	background-color: var(--aegis-btn-info, ${btnInfo});
 	color: var(--aegis-color-dark, ${colorDark});
 	border-color: ${cyan[6]};
 }
 
-.btn.btn-info:not(:disabled):not(.disabled):hover, .btn.btn-info:not(:disabled):not(.disabled):focus {
+.btn.btn-info:hover, .btn.btn-info:focus {
 	background-color: var(--aegis-btn-info-hover, ${btnInfoHover});
 	border-color: ${cyan[7]};
 }
 
-.btn.btn-info:not(:disabled):not(.disabled):active {
+.btn.btn-info:active {
 	background-color: var(--aegis-btn-info-active, ${btnInfoActive});
 	border-color: ${cyan[8]};
 }
 
-.btn.btn-info:disabled, .btn.btn-info.disabled {
+x.btn.btn-info:disabled, .btn.btn-info.disabled {
 	background-color: var(--aegis-btn-active-disabled, ${btnDisabled});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[6]};
 	cursor: not-allowed;
 }`;
 
-const danger = css`.btn.btn-danger:not(:disabled):not(.disabled) {
+export const btnOutlineInfo = css`.btn.btn-outline-info {
+	background-color: transparent;
+	color: var(--aegis-btn-info, ${btnInfo});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-info:hover, .btn.btn-outline-info:focus {
+	background-color: var(--aegis-btn-info-hover, ${btnInfoHover});
+	border-color: ${cyan[7]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-info:active {
+	background-color: var(--aegis-btn-info-active, ${btnInfoActive});
+	border-color: ${cyan[8]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+x.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+	color: var(--aegis-btn-active-disabled, ${btnDisabled});
+}`;
+
+const danger = css`.btn.btn-danger {
 	background-color: var(--aegis-btn-danger, ${btnDanger});
 	color: var(--aegis-color-dark, ${colorDark});
 	border-color: ${red[6]};
 }
 
-.btn.btn-danger:not(:disabled):not(.disabled):hover, .btn.btn-danger:not(:disabled):not(.disabled):focus {
+.btn.btn-danger:hover, .btn.btn-danger:focus {
 	background-color: var(--aegis-btn-danger-hover, ${btnDangerHover});
 	border-color: ${red[7]};
 }
 
-.btn.btn-danger:not(:disabled):not(.disabled):active {
+.btn.btn-danger:active {
 	background-color: var(--aegis-btn-danger-active, ${btnDangerActive});
 	border-color: ${red[8]};
 }
 
-.btn.btn-danger:disabled, .btn.btn-danger.disabled {
+x.btn.btn-danger:disabled, .btn.btn-danger.disabled {
 	background-color: var(--aegis-btn-active-disabled, ${btnDisabled});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[6]};
 	cursor: not-allowed;
 }`;
 
-const warning = css`.btn.btn-warning:not(:disabled):not(.disabled) {
-	background-color: var(--aegis-btn-warning, ${btnWarning});
+export const btnOutlineDanger = css`.btn.btn-outline-danger {
+	background-color: transparent;
+	color: var(--aegis-btn-danger, ${btnDanger});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-danger:hover, .btn.btn-outline-danger:focus {
+	background-color: var(--aegis-btn-danger-hover, ${btnDangerHover});
+	border-color: ${red[7]};
 	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-danger:active {
+	background-color: var(--aegis-btn-danger-active, ${btnDangerActive});
+	border-color: ${red[8]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+x.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+	color: var(--aegis-btn-active-disabled, ${btnDisabled});
+}`;
+
+const warning = css`.btn.btn-warning {
+	background-color: var(--aegis-btn-warning, ${btnWarning});
+	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${yellow[6]};
 }
 
-.btn.btn-warning:not(:disabled):not(.disabled):hover, .btn.btn-warning:not(:disabled):not(.disabled):focus {
+.btn.btn-warning:hover, .btn.btn-warning:focus {
 	background-color: var(--aegis-btn-warning-hover, ${btnWarningHover});
 	border-color: ${yellow[7]};
 }
 
-.btn.btn-warning:not(:disabled):not(.disabled):active {
+.btn.btn-warning:active {
 	background-color: var(--aegis-btn-warning-active, ${btnWarningActive});
 	border-color: ${yellow[8]};
 }
 
-.btn.btn-warning:disabled, .btn.btn-warning.disabled {
+x.btn.btn-warning:disabled, .btn.btn-warning.disabled {
 	background-color: var(--aegis-btn-active-disabled, ${btnDisabled});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[6]};
 	cursor: not-allowed;
 }`;
 
-const light = css`.btn.btn-light:not(:disabled):not(.disabled) {
+export const btnOutlineWarning = css`.btn.btn-outline-warning {
+	background-color: transparent;
+	color: var(--aegis-btn-warning, ${btnWarning});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-warning:hover, .btn.btn-outline-warning:focus {
+	background-color: var(--aegis-btn-warning-hover, ${btnWarningHover});
+	border-color: ${yellow[7]};
+	color: var(--aegis-color-light, ${colorLight});
+}
+
+.btn.btn-outline-warning:active {
+	background-color: var(--aegis-btn-warning-active, ${btnWarningActive});
+	border-color: ${yellow[8]};
+	color: var(--aegis-color-light, ${colorLight});
+}
+
+x.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+	color: var(--aegis-btn-active-disabled, ${btnDisabled});
+}`;
+
+const light = css`.btn.btn-light {
 	background-color: var(--aegis-btn-light, ${btnLight});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[2]};
 }
 
-.btn.btn-light:not(:disabled):not(.disabled):hover, .btn.btn-light:not(:disabled):not(.disabled):focus {
+.btn.btn-light:hover, .btn.btn-light:focus {
 	background-color: var(--aegis-btn-light-hover, ${btnLightHover});
 	border-color: ${gray[3]};
 }
 
-.btn.btn-light:not(:disabled):not(.disabled):active {
+.btn.btn-light:active {
 	background-color: var(--aegis-btn-light-active, ${btnLightActive});
 	border-color: ${gray[4]};
 }
 
-.btn.btn-light:disabled, .btn.btn-light.disabled {
+x.btn.btn-light:disabled, .btn.btn-light.disabled {
 	background-color: var(--aegis-btn-disabled, ${btnDisabled});
 	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[5]};
 	cursor: not-allowed;
 }`;
 
-const dark = css`.btn.btn-dark:not(:disabled):not(.disabled) {
+export const btnOutlineLight = css`.btn.btn-outline-light {
+	background-color: transparent;
+	color: var(--aegis-btn-light, ${btnLight});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-light:hover, .btn.btn-outline-light:focus {
+	background-color: var(--aegis-btn-light-hover, ${btnLightHover});
+	border-color: ${gray[3]};
+	color: var(--aegis-color-light, ${colorLight});
+}
+
+.btn.btn-outline-light:active {
+	background-color: var(--aegis-btn-light-active, ${btnLightActive});
+	border-color: ${gray[4]};
+	color: var(--aegis-btn-light-active, ${btnLightActive});
+}
+
+x.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+	color: var(--aegis-color-light, ${colorLight});
+}`;
+
+const dark = css`.btn.btn-dark {
 	background-color: var(--aegis-btn-dark, ${btnDark});
 	color: var(--aegis-color-dark, ${colorDark});
 	border-color: ${gray[7]};
 }
 
-.btn.btn-dark:not(:disabled):not(.disabled):hover, .btn.btn-dark:not(:disabled):not(.disabled):focus {
+.btn.btn-dark:hover, .btn.btn-dark:focus {
 	background-color: var(--aegis-btn-dark-hover, ${btnDarkHover});
 	border-color: ${gray[8]};
 }
 
-.btn.btn-dark:not(:disabled):not(.disabled):active {
+.btn.btn-dark:active {
 	background-color: var(--aegis-btn-dark-active, ${btnDarkActive});
 	border-color: ${gray[9]};
 }
 
-.btn.btn-dark:disabled, .btn.btn-dark.disabled {
+x.btn.btn-dark:disabled, .btn.btn-dark.disabled {
 	background-color: var(--aegis-btn-disabled, ${btnDisabled});
-	color: var(--aegis-color-dark, ${colorDark});
+	color: var(--aegis-color-light, ${colorLight});
 	border-color: ${gray[6]};
 	cursor: not-allowed;
 }`;
 
-const link = css`.btn.btn-link:not(:disabled):not(.disabled) {
+export const btnOutlineDark = css`.btn.btn-outline-dark {
+	background-color: transparent;
+	color: var(--aegis-btn-dar, ${btnDark});
+	border-color: currentColor;
+}
+
+.btn.btn-outline-dark:hover, .btn.btn-outline-dark:focus {
+	background-color: var(--aegis-btn-dark-hover, ${btnDarkHover});
+	border-color: ${gray[8]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-dark:active {
+	background-color: var(--aegis-btn-dark-active, ${btnDarkActive});
+	border-color: ${gray[9]};
+	color: var(--aegis-color-dark, ${colorDark});
+}
+
+.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+	color: var(--aegis-btn-active-disabled, ${btnDisabled});
+}`;
+
+const link = css`.btn.btn-link {
 	background-color: var(--aegis-btn-link, ${btnLink});
 	color: ${linkColor};
 	border-color: transparent;
 	text-decoration: none;
 }
 
-.btn.btn-link:not(:disabled):not(.disabled):hover, .btn.btn-link:not(:disabled):not(.disabled):focus {
+.btn.btn-link:hover, .btn.btn-link:focus {
 	background-color: var(--aegis-btn-link-hover, ${btnLinkHover});
 	text-decoration: underline;
 }
 
-.btn.btn-link:not(:disabled):not(.disabled):active {
+.btn.btn-link:active {
 	background-color: var(--aegis-btn-link-active, ${btnLinkActive});
 	text-decoration: underline;
 }
 
-.btn.btn-link:disabled, .btn.btn-link.disabled {
+x.btn.btn-link:disabled, .btn.btn-link.disabled {
 	color: var(--aegis-btn-disabled, ${gray[5]});
 	cursor: not-allowed;
 }`;

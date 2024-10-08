@@ -61,4 +61,7 @@ export const customProperties = {
 	'normal-speed': { initialValue: '600ms', syntax: '<time>' },
 	'slow-speed': { initialValue: '800ms', syntax: '<time>' },
 	'crawl-speed': { initialValue: '1200ms', syntax: '<time>' },
+	'btn-disabled-opacity': { initialValue: 0.65, syntax: '<number>' },
+	'btn-disabled-saturation': { initialValue: '50%', syntax: '<percentage>' },
+	'btn-disabled-brightness': { initialValue: '90%', syntax: '<percentage>' },
 };
