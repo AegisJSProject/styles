@@ -8,3 +8,8 @@ export const properties = css`${Object.entries(customProperties).map(
 		initial-value: ${initialValue};
 	}`
 ).join('\n\n')}`;
+
+
+export const propertiesLegacy = css`:root {
+	${Object.entries(customProperties).map(([name, { initialValue }]) => `--aegis-${name}: ${initialValue};\n`).join('\n')}
+}`;

@@ -1,9 +1,19 @@
-export function sheetToFile(sheet, { filename = 'styles.css' } = {}) {
-	return new File(
-		Array.from(sheet.rules, rule => rule.cssText),
-		filename,
-		{ type: 'text/css' }
-	);
+export async function sheetToFile(sheet, { filename = 'styles.css' } = {}) {
+	const { promise, resolve, reject } = Promise.withResolvers();
+
+	requestAnimationFrame(() => {
+		try {
+			resolve(new File(
+				Array.from(sheet.rules, rule => rule.cssText),
+				filename,
+				{ type: 'text/css' }
+			));
+		} catch(err) {
+			reject(err);
+		}
+	});
+
+	return promise;
 }
 
 export async function sheetToLink(sheet, {
@@ -38,8 +48,7 @@ export async function sheetToLink(sheet, {
 		link.disabled = true;
 	}
 
-	link.href = URL.createObjectURL(sheetToFile(sheet));
-
+	link.href = URL.createObjectURL(await sheetToFile(sheet));
 	return link;
 }
 

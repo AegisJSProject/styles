@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.3] - 2024-10-08
+
+### Added
+- Add `.btn-outline-*` styles
+
+### Fixed
+- Give disabled buttons more proper styling
+
 ## [v0.2.2] - 2024-10-04
 
 ### Added
