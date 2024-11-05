@@ -66,11 +66,17 @@ const btns = document.getElementById('btns');
 [
 	'primary','outline-primary', 'secondary', 'outline-secondary', 'success', 'outline-success', 'info', 'outline-info',
 	'warning', 'outline-warning', 'danger', 'outline-danger', 'light', 'outline-light', 'dark',
-	'outline-dark' ,'link',
+	'outline-dark' ,'link', 'system', 'system-accent',
 ].forEach(t => {
 	const btn = document.createElement('button');
-	btn.classList.add('btn', 'btn-lg', 'btn-block', `btn-${t}`);
+	const disabled = document.createElement('button');
+	btn.classList.add('btn', `btn-${t}`);
+	disabled.classList.add('btn', `btn-${t}`, 'disabled');
 	btn.type = 'button';
 	btn.textContent = t;
-	btns.append(btn);
+	disabled.disabled = true;
+	disabled.textContent = `${t} disabled`;
+	btn.tabIndex = 0;
+	disabled.tabIndex = 0;
+	btns.append(btn, disabled);
 });

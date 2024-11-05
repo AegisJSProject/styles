@@ -1,6 +1,6 @@
 {
   "name": "@aegisjsproject/styles",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Pre-made and reusable styles for `@aegisjsproject/core`",
   "keywords": [
     "aegis",
@@ -55,9 +55,10 @@
     "prepare": "npm run build",
     "lint:js": "eslint .",
     "fix:js": "eslint . --fix",
-    "build": "npm run build:js",
-    "clean": "rm -f ./*.cjs",
+    "build": "npm run build:js && npm run build:css",
+    "clean": "rm -f ./*.cjs && rm -rf ./css/*.css",
     "build:js": "npm run clean && rollup -c rollup.config.js",
+    "build:css": "node ./createSheets.js",
     "create:lock": "npm i --package-lock-only --ignore-scripts --no-audit --no-fund",
     "version:bump": "npm run version:bump:patch",
     "version:bump:patch": "npm version --no-git-tag-version patch && npm run create:lock",

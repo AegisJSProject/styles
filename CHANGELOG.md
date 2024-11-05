@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.4] - 2024-11-05
+
+### Added
+- Add system style button classes using eg `ButtonFace` and `AccentColor`
+- Add `.css` versions of stylesheets in `/css/*.css`
+
+### Fixed
+- Fix handling of disabled buttons
+
 ## [v0.2.3] - 2024-10-08
 
 ### Added

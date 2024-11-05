@@ -34,6 +34,6 @@ export const btnDarkHover = gray[6];
 export const btnLink = 'transparent'; // Link button background should be transparent
 export const btnLinkHover = 'transparent';
 export const btnLinkActive = 'transparent';
-export const linkColor = '#007bff';
+export const linkColor = 'LinkText';
 export const scrollbarColor = primary;
 export const scrollbarTrack = gray[8];
