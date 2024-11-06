@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.5] - 2024-11-06
+
+### Added
+- Add support for `:state(--disabled)` in button styles and path to other custom states
+
 ## [v0.2.4] - 2024-11-05
 
 ### Added

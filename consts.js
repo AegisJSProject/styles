@@ -65,3 +65,5 @@ export const customProperties = {
 	'btn-disabled-saturation': { initialValue: '50%', syntax: '<percentage>' },
 	'btn-disabled-brightness': { initialValue: '90%', syntax: '<percentage>' },
 };
+
+export const SUPPORTS_CUSTOM_STATES = CSS.supports('selector(:state(foo))');
