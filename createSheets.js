@@ -21,6 +21,7 @@ class CSSStyleSheet {
 	}
 }
 
+globalThis.CSS = { supports: () => true };
 globalThis.CSSStyleSheet = CSSStyleSheet;
 globalThis.document = {};
 globalThis.MediaQueryList = class MediaQueryList extends EventTarget {};

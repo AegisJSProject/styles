@@ -1,5 +1,6 @@
 import { css } from '@aegisjsproject/core/parsers/css.js';
 import { blue, green, red, yellow, gray, cyan } from './palette/bootstrap.js';
+import { SUPPORTS_CUSTOM_STATES } from './consts.js';
 import {
 	colorLight, colorDark, btnPrimary, btnPrimaryActive, btnSecondary, btnSecondaryActive, btnSecondaryHover,
 	btnPrimaryHover, btnDisabled, btnSuccess, btnSuccessActive, btnSuccessHover, btnDanger, btnDangerActive,
@@ -7,6 +8,10 @@ import {
 	btnLight, btnLightHover, btnLightActive, btnDark, btnDarkHover, btnDarkActive, btnLink, btnLinkHover,
 	btnLinkActive, linkColor,
 } from './palette/aegis.js';
+
+const DISABLED_STATE = SUPPORTS_CUSTOM_STATES ? ':state(--disabled)' : '._state--disabled';
+
+const DISABLED = `:disabled, .disabled, ${DISABLED_STATE}`;
 
 export const btn = css`.btn:not([hidden]) {
 	cursor: pointer;
@@ -40,13 +45,13 @@ export const btn = css`.btn:not([hidden]) {
 	width: 100%;
 }
 
-.btn:disabled:not(.btn-system, .btn-system-accent), .btn.disabled:not(.btn-system, .btn-system-accent) {
+.btn:disabled:not(.btn-system, .btn-system-accent), .btn.disabled:not(.btn-system, .btn-system-accent), .btn${DISABLED} {
 	cursor: not-allowed;
 	opacity: var(--aegis-btn-disabled-opacity, 0.65);
 	filter: saturate(var(--aegis-btn-disabled-saturation, 50%)) brightness(var(--aegis-btn-disabled-brightness, 90%));
 }
 
-.btn.disabled {
+.btn.disabled, .btn${DISABLED_STATE} {
 	pointer-events: none;
 }
 
@@ -78,7 +83,7 @@ const system = css`.btn.btn-system {
 	border-color: hsl(from ButtonFace h s calc(l * 0.8));
 }
 
-.btn.btn-system:disabled, .btn.btn-system.disabled {
+.btn.btn-system:disabled, .btn.btn-system.disabled, .btn.btn-system${DISABLED_STATE} {
 	background-color: hsl(from ButtonFace h calc(s * 0.2) l);
 	border-color: hsl(from ButtonFace h calc(s * 0.2) l);
 	color: GrayText;
@@ -107,7 +112,7 @@ const systemAccent = css`.btn.btn-system-accent {
 	border-color: hsl(from AccentColor h s calc(l * 0.8));
 }
 
-.btn.btn-system-accent:disabled, .btn.btn-system-accent.disabled {
+.btn.btn-system-accent:disabled, .btn.btn-system-accent.disabled, .btn.btn-system${DISABLED_STATE} {
 	background-color: hsl(from AccentColor h calc(s * 0.2) l);
 	border-color: hsl(from AccentColor h calc(s * 0.2) l);
 	color: GrayText;
@@ -119,7 +124,7 @@ const primary = css`.btn.btn-primary {
 	border-color: ${blue[6]};
 }
 
-.btn.btn-primary:hover:not(:disabled, .disabled), .btn.btn-primary:focus-visible {
+.btn.btn-primary:hover:not(${DISABLED}), .btn.btn-primary:focus-visible {
 	background-color: var(--aegis-btn-primary-hover, ${btnPrimaryHover});
 	border-color: ${blue[7]};
 }
@@ -143,7 +148,7 @@ export const btnOutlinePrimary = css`.btn.btn-outline-primary {
 	outline-color: var(--aegis-btn-primary, ${btnPrimary});
 }
 
-.btn.btn-outline-primary:hover:not(:disabled, .disabled), .btn.btn-outline-primary:focus-visible {
+.btn.btn-outline-primary:hover:not(${DISABLED}), .btn.btn-outline-primary:focus-visible {
 	background-color: var(--aegis-btn-primary-hover, ${btnPrimaryHover});
 	border-color: ${blue[7]};
 	color: var(--aegis-color-dark, ${colorDark});
@@ -161,7 +166,7 @@ const secondary = css`.btn.btn-secondary {
 	border-color: ${gray[7]};
 }
 
-.btn.btn-secondary:hover:not(:disabled, .disabled), .btn.btn-secondary:focus-visible {
+.btn.btn-secondary:hover:not(${DISABLED}), .btn.btn-secondary:focus-visible {
 	background-color: var(--aegis-btn-secondary-hover, ${btnSecondaryHover});
 	border-color: ${gray[8]};
 }
@@ -181,7 +186,7 @@ export const btnOutlineSecondary = css`.btn.btn-outline-secondary {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-secondary:hover:not(:disabled, .disabled), .btn.btn-outline-secondary:focus-visible {
+.btn.btn-outline-secondary:hover:not(${DISABLED}), .btn.btn-outline-secondary:focus-visible {
 	background-color: var(--aegis-btn-secondary-hover, ${btnSecondaryHover});
 	border-color: ${gray[8]};
 	color: var(--aegis-color-dark, ${colorDark});
@@ -197,7 +202,7 @@ export const btnOutlineSecondary = css`.btn.btn-outline-secondary {
 	color: var(--aegis-color-dark, ${colorDark});
 }
 
-.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled, .btn.btn-outline-seconday${DISABLED_STATE} {
 	color: var(--aegis-btn-active-disabled, ${btnDisabled});
 }`;
 
@@ -207,7 +212,7 @@ const success = css`.btn.btn-success {
 	border-color: ${green[6]};
 }
 
-.btn.btn-success:hover:not(:disabled, .disabled), .btn.btn-success:focus-visible {
+.btn.btn-success:hover:not(${DISABLED}), .btn.btn-success:focus-visible {
 	background-color: var(--aegis-btn-success-hover, ${btnSuccessHover});
 	border-color: ${green[7]};
 }
@@ -227,7 +232,7 @@ export const btnOutlineSuccess = css`.btn.btn-outline-success {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-success:hover:not(:disabled, .disabled), .btn.btn-outline-success:focus-visible {
+.btn.btn-outline-success:hover:not(${DISABLED}), .btn.btn-outline-success:focus-visible {
 	background-color: var(--aegis-btn-success-hover, ${btnSuccessHover});
 	border-color: ${green[7]};
 	color: var(--aegis-color-dark, ${colorDark});
@@ -249,7 +254,7 @@ const info = css`.btn.btn-info {
 	border-color: ${cyan[6]};
 }
 
-.btn.btn-info:not(:disabled, .disabled), .btn.btn-info:focus-visible {
+.btn.btn-info:not(${DISABLED}), .btn.btn-info:focus-visible {
 	background-color: var(--aegis-btn-info-hover, ${btnInfoHover});
 	border-color: ${cyan[7]};
 }
@@ -269,7 +274,7 @@ export const btnOutlineInfo = css`.btn.btn-outline-info {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-info:hover:not(:disabled, .disabled), .btn.btn-outline-info:focus-visible {
+.btn.btn-outline-info:hover:not(${DISABLED}), .btn.btn-outline-info:focus-visible {
 	background-color: var(--aegis-btn-info-hover, ${btnInfoHover});
 	border-color: ${cyan[7]};
 	color: var(--aegis-color-dark, ${colorDark});
@@ -291,7 +296,7 @@ const danger = css`.btn.btn-danger {
 	border-color: ${red[6]};
 }
 
-.btn.btn-danger:hover:not(:disabled, .disabled), .btn.btn-danger:focus-visible {
+.btn.btn-danger:hover:not(${DISABLED}), .btn.btn-danger:focus-visible {
 	background-color: var(--aegis-btn-danger-hover, ${btnDangerHover});
 	border-color: ${red[7]};
 }
@@ -311,7 +316,7 @@ export const btnOutlineDanger = css`.btn.btn-outline-danger {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-danger:hover:not(:disabled, .disabled), .btn.btn-outline-danger:focus-visible {
+.btn.btn-outline-danger:hover:not(${DISABLED}), .btn.btn-outline-danger:focus-visible {
 	background-color: var(--aegis-btn-danger-hover, ${btnDangerHover});
 	border-color: ${red[7]};
 	color: var(--aegis-color-dark, ${colorDark});
@@ -333,7 +338,7 @@ const warning = css`.btn.btn-warning {
 	border-color: ${yellow[6]};
 }
 
-.btn.btn-warning:hover:not(:disabled, .disabled), .btn.btn-warning:focus-visible {
+.btn.btn-warning:hover:not(${DISABLED}), .btn.btn-warning:focus-visible {
 	background-color: var(--aegis-btn-warning-hover, ${btnWarningHover});
 	border-color: ${yellow[7]};
 }
@@ -353,7 +358,7 @@ export const btnOutlineWarning = css`.btn.btn-outline-warning {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-warning:not(:disabled, .disabled), .btn.btn-outline-warning:focus-visible {
+.btn.btn-outline-warning:not(${DISABLED}), .btn.btn-outline-warning:focus-visible {
 	background-color: var(--aegis-btn-warning-hover, ${btnWarningHover});
 	border-color: ${yellow[7]};
 	color: var(--aegis-color-light, ${colorLight});
@@ -375,7 +380,7 @@ const light = css`.btn.btn-light {
 	border-color: ${gray[2]};
 }
 
-.btn.btn-light:hover:not(:disabled, .disabled), .btn.btn-light:focus-visible {
+.btn.btn-light:hover:not(${DISABLED}), .btn.btn-light:focus-visible {
 	background-color: var(--aegis-btn-light-hover, ${btnLightHover});
 	border-color: ${gray[3]};
 }
@@ -395,7 +400,7 @@ export const btnOutlineLight = css`.btn.btn-outline-light {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-light:hover:not(:disabled, .disabled), .btn.btn-outline-light:focus-visible {
+.btn.btn-outline-light:hover:not(${DISABLED}), .btn.btn-outline-light:focus-visible {
 	background-color: var(--aegis-btn-light-hover, ${btnLightHover});
 	border-color: ${gray[3]};
 	color: var(--aegis-color-light, ${colorLight});
@@ -417,7 +422,7 @@ const dark = css`.btn.btn-dark {
 	border-color: ${gray[7]};
 }
 
-.btn.btn-dark:hover:not(:disabled, .disabled), .btn.btn-dark:focus-visible {
+.btn.btn-dark:hover:not(${DISABLED}), .btn.btn-dark:focus-visible {
 	background-color: var(--aegis-btn-dark-hover, ${btnDarkHover});
 	border-color: ${gray[8]};
 }
@@ -437,7 +442,7 @@ export const btnOutlineDark = css`.btn.btn-outline-dark {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-dark:hover:not(:disabled, .disabled), .btn.btn-outline-dark:focus-visible {
+.btn.btn-outline-dark:hover:not(${DISABLED}), .btn.btn-outline-dark:focus-visible {
 	background-color: var(--aegis-btn-dark-hover, ${btnDarkHover});
 	border-color: ${gray[8]};
 	color: var(--aegis-color-dark, ${colorDark});
@@ -453,7 +458,7 @@ export const btnOutlineDark = css`.btn.btn-outline-dark {
 	color: var(--aegis-color-dark, ${colorDark});
 }
 
-.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled {
+.btn.btn-outline-secondary:disabled, .btn.btn-outline-secondary.disabled, .btn.btn-outline-secondary${DISABLED_STATE} {
 	color: var(--aegis-btn-active-disabled, ${btnDisabled});
 }`;
 
@@ -464,7 +469,7 @@ const link = css`.btn.btn-link {
 	text-decoration: none;
 }
 
-.btn.btn-link:hover:not(:disabled, .disabled), .btn.btn-link:focus-visible {
+.btn.btn-link:hover:not(${DISABLED}), .btn.btn-link:focus-visible {
 	background-color: var(--aegis-btn-link-hover, ${btnLinkHover});
 	text-decoration: underline;
 }
