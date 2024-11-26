@@ -1,4 +1,4 @@
-import { css } from '@aegisjsproject/core/parsers/css.js';
+import { css } from '@aegisjsproject/parsers/css.js';
 import { blue, green, red, yellow, gray, cyan } from './palette/bootstrap.js';
 import { SUPPORTS_CUSTOM_STATES } from './consts.js';
 import {
@@ -17,7 +17,7 @@ export const btn = css`.btn:not([hidden]) {
 	cursor: pointer;
 	display: inline-block;
 	padding: 0.6em 1.3em;
-	border-width: 1px;
+	border-width: var(--aegis-btn-border-width, 0px);
 	border-style: solid;
 	appearance: button;
 	line-height: 1.5;

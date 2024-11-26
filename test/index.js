@@ -1,4 +1,4 @@
-import { css } from '@aegisjsproject/core';
+import { css } from '@aegisjsproject/parsers/css.js';
 const { properties, propertiesLegacy, componentBase, componentBorder, componentDarkTheme, componentLightTheme, btn, reset, sheetToLink, ...styles } = await import('@aegisjsproject/styles');
 
 document.head.append(await sheetToLink(propertiesLegacy));

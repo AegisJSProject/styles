@@ -1,5 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 
+globalThis.reportError ??= console.error;
+
 const scripts = [
 	'./animations.js', './button.js', './forms.js', './misc.js', './properties.js', './reset.js',
 	'./scrollbar.js', './styles.js', './theme.js',

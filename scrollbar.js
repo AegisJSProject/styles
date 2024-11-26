@@ -1,4 +1,4 @@
-import { css } from '@aegisjsproject/core/parsers/css.js';
+import { css } from '@aegisjsproject/parsers/css.js';
 import { scrollbarColor, scrollbarTrack } from './palette/aegis.js';
 
 export const scrollbarFallback = css`@supports not (scrollbar-color: currentColor transparent) {

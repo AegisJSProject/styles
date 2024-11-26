@@ -10,6 +10,7 @@ import {
 export const customProperties = {
 	'font': { initialValue: 'system-ui', syntax: '<custom-ident> | <string>' },
 	'btn-border-radius': { initialValue: '5px', syntax: '<length>' },
+	'btn-border-width': { initialValue: '0px', syntax: '<length>' },
 	'color-light': { initialValue: colorLight, syntax: '<color>' },
 	'color-dark': { initialValue: colorDark, syntax: '<color>' },
 	'bg-light': { initialValue: bgLight, syntax: '<color>' },
