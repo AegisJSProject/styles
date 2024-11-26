@@ -1,4 +1,4 @@
-import { css } from '@aegisjsproject/core/parsers/css.js';
+import { css } from '@aegisjsproject/parsers/css.js';
 
 export const transform = css`.transform-origin-center {
 	transform-origin: center;

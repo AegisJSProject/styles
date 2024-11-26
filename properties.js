@@ -1,4 +1,4 @@
-import { css } from '@aegisjsproject/core/parsers/css.js';
+import { css } from '@aegisjsproject/parsers/css.js';
 import { customProperties } from './consts.js';
 
 export const properties = css`${Object.entries(customProperties).map(

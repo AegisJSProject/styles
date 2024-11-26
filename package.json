@@ -1,6 +1,6 @@
 {
   "name": "@aegisjsproject/styles",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Pre-made and reusable styles for `@aegisjsproject/core`",
   "keywords": [
     "aegis",
@@ -93,6 +93,6 @@
     "rollup": "^4.9.6"
   },
   "dependencies": {
-    "@aegisjsproject/core": "^0.2.0"
+    "@aegisjsproject/parsers": "^0.0.16"
   }
 }
