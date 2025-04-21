@@ -35,8 +35,8 @@ export const lightTheme = lightCSS`:root:not([data-theme="dark"]) {
 
 export const componentBase = css`:host {
 	color-scheme: light dark;
-	color: var(--aegis-color-light, ${dark});
-	background-color: var(--aegis-bg-light, ${light});
+	color: var(--aegis-color-light, ${light});
+	background-color: var(--aegis-bg-light, ${dark});
 	font-family: system-ui;
 }
 
@@ -105,6 +105,6 @@ export const componentDarkTheme = darkCSS`:host(:not([theme="light"])) {
 
 export const componentLightTheme = lightCSS`:host(:not([theme="dark"])) {
 	color-scheme: light;
-	color: var(--aegis-color-light, ${light});
-	background-color: var(--aegis-bg-light, ${dark});
+	color: var(--aegis-color-light, ${dark});
+	background-color: var(--aegis-bg-light, ${light});
 }`;
