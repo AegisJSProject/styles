@@ -358,7 +358,7 @@ export const btnOutlineWarning = css`.btn.btn-outline-warning {
 	border-color: currentColor;
 }
 
-.btn.btn-outline-warning:not(${DISABLED}), .btn.btn-outline-warning:focus-visible {
+.btn.btn-outline-warning:hover:not(${DISABLED}), .btn.btn-outline-warning:focus-visible {
 	background-color: var(--aegis-btn-warning-hover, ${btnWarningHover});
 	border-color: ${yellow[7]};
 	color: var(--aegis-color-light, ${colorLight});
