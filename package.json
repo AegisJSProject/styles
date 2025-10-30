@@ -93,6 +93,6 @@
     "rollup": "^4.9.6"
   },
   "dependencies": {
-    "@aegisjsproject/parsers": "^0.0.16"
+    "@aegisjsproject/parsers": "^0.1.0"
   }
 }
