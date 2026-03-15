@@ -1,9 +1,13 @@
 import { css } from '@aegisjsproject/parsers/css.js';
-const { properties, propertiesLegacy, componentBase, componentBorder, componentDarkTheme, componentLightTheme, btn, reset, sheetToLink, ...styles } = await import('@aegisjsproject/styles');
+import { componentBase, componentDarkTheme, componentLightTheme, componentBorder } from '../theme.js';
+import props from '../css/properties.css' with { type: 'css' };
+import theme from '../css/theme.css' with { type: 'css' };
+import btn from '../css/button.css' with { type: 'css' };
+const { reset, ...styles } = await import('@aegisjsproject/styles');
 
-document.head.append(await sheetToLink(propertiesLegacy));
+// document.head.append(await sheetToLink(propertiesLegacy));
 
-document.adoptedStyleSheets = [btn, reset, properties, ...Object.values(styles).filter(mod => mod instanceof CSSStyleSheet)];
+document.adoptedStyleSheets = [btn, reset, props, theme, ...Object.values(styles).filter(mod => mod instanceof CSSStyleSheet)];
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
