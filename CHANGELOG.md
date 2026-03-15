@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.8] - 2026-03-14
+
+### Changed
+- Separate `@property` from old `--prop`s
+
+### Fixed
+- Fix outputing `.css` for sheets with media queries
+
 ## [v0.2.7] - 2025-04-21
 
 ### Fixed

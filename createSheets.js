@@ -4,14 +4,39 @@ globalThis.reportError ??= console.error;
 
 const scripts = [
 	'./animations.js', './button.js', './forms.js', './misc.js', './properties.js', './reset.js',
-	'./scrollbar.js', './styles.js', './theme.js',
+	'./scrollbar.js', './styles.js', './theme.js', './properties-legacy.js',
 ];
 
 class CSSStyleSheet {
 	#text = '';
+	#media = null;
+	#disabled = false;
+
+	constructor({ media = null, disabled = false } = {}) {
+		this.#media = media;
+		this.#disabled = disabled;
+	}
+
+	get media() {
+		return this.#media;
+	}
+
+	get disabled() {
+		return this.#disabled;
+	}
+
+	set disabled(val) {
+		this,this.#disabled = val;
+	}
 
 	toString() {
-		return this.#text;
+		if (this.disabled) {
+			return '';
+		} else if (typeof this.#media === 'string') {
+			return `@media (${this.#media}) {${this.#text}}`;
+		} else {
+			return this.#text;
+		}
 	}
 
 	replaceSync(text) {
@@ -19,14 +44,38 @@ class CSSStyleSheet {
 	}
 
 	async replace(text) {
-		return Promise.resolve().then(() => this.replaceSync(text)).then(() => this);
+		return Promise.try(() => this.replaceSync(text)).then(() => this);
 	}
 }
 
 globalThis.CSS = { supports: () => true };
 globalThis.CSSStyleSheet = CSSStyleSheet;
 globalThis.document = {};
-globalThis.MediaQueryList = class MediaQueryList extends EventTarget {};
+globalThis.matchMedia = media => {
+	const mql = new MediaQueryList();
+	mql.media = media;
+	return mql;
+};
+
+globalThis.MediaQueryList = class MediaQueryList extends EventTarget {
+	#media = null;
+
+	get matches() {
+		return true;
+	}
+
+	get media() {
+		return this.#media;
+	}
+
+	set media(val) {
+		this.#media = val;
+	}
+
+	toString() {
+		return this.#media;
+	}
+};
 
 async function saveSheet(path) {
 	const module = await import(path);
