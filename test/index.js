@@ -1,13 +1,16 @@
 import { css } from '@aegisjsproject/parsers/css.js';
 import { componentBase, componentDarkTheme, componentLightTheme, componentBorder } from '../theme.js';
+import { presentation } from '../presentation.js';
 import props from '../css/properties.css' with { type: 'css' };
 import theme from '../css/theme.css' with { type: 'css' };
 import btn from '../css/button.css' with { type: 'css' };
-const { reset, ...styles } = await import('@aegisjsproject/styles');
+import layers from '../css/layers.css' with { type: 'css' };
+import animations from '../css/animations.css' with { type: 'css' };
+const { reset } = await import('@aegisjsproject/styles');
 
 // document.head.append(await sheetToLink(propertiesLegacy));
 
-document.adoptedStyleSheets = [btn, reset, props, theme, ...Object.values(styles).filter(mod => mod instanceof CSSStyleSheet)];
+document.adoptedStyleSheets = [layers, btn, reset, props, theme, presentation, animations];
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
@@ -58,7 +61,6 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 			css`:host {
 				padding: 0.7em 0.3em;
 				width: max-content;
-				margin: 8px;
 			}`
 		];
 		this.#shadow.append(slot);

@@ -1,6 +1,7 @@
 export * as bootstrap from './palette/bootstrap.js';
 export * as gnome from './palette/gnome.js';
 export * as palette from './palette/aegis.js';
+export { layers } from './layers.js';
 export { reset } from './reset.js';
 export * from './properties.js';
 export * from  './theme.js';
@@ -9,5 +10,6 @@ export * from './misc.js';
 export * from './forms.js';
 export * from './scrollbar.js';
 export * from './animations.js';
+export * from './presentation.js';
 export * from './consts.js';
 export { sheetToFile, sheetToLink, registerProperties } from './utils.js';

@@ -68,3 +68,5 @@ export const customProperties = {
 };
 
 export const SUPPORTS_CUSTOM_STATES = CSS.supports('selector(:state(foo))');
+
+export const LAYER_PREFIX = 'vendor.aegis';
