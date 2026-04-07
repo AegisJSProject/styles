@@ -1,6 +1,6 @@
 {
   "name": "@aegisjsproject/styles",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "Pre-made and reusable styles for `@aegisjsproject/core`",
   "keywords": [
     "aegis",

@@ -4,7 +4,8 @@ globalThis.reportError ??= console.error;
 
 const scripts = [
 	'./animations.js', './button.js', './forms.js', './misc.js', './properties.js', './reset.js',
-	'./scrollbar.js', './styles.js', './theme.js', './properties-legacy.js',
+	'./scrollbar.js', './styles.js', './theme.js', './properties-legacy.js', './presentation.js',
+	'./layers.js',
 ];
 
 class CSSStyleSheet {
