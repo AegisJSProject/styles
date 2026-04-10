@@ -6,6 +6,7 @@ export { reset } from './reset.js';
 export * from './properties.js';
 export * from  './theme.js';
 export * from './button.js';
+export { customButton } from './custom-button.js';
 export * from './misc.js';
 export * from './forms.js';
 export * from './scrollbar.js';

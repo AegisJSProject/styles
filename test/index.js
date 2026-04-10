@@ -6,6 +6,8 @@ import theme from '../css/theme.css' with { type: 'css' };
 import btn from '../css/button.css' with { type: 'css' };
 import layers from '../css/layers.css' with { type: 'css' };
 import animations from '../css/animations.css' with { type: 'css' };
+import customButton from '../css/custom-button.css' with { type: 'css' };
+
 const { reset } = await import('@aegisjsproject/styles');
 
 // document.head.append(await sheetToLink(propertiesLegacy));
@@ -68,38 +70,41 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 });
 
 customElements.define('test-button', class TestButton extends HTMLElement {
-	#shadow;
-	#internals;
+	#shadow = this.attachShadow({ mode: 'open' });
+	#internals = this.attachInternals();
 
-	constructor() {
-		super();
-		this.#shadow = this.attachShadow({ mode: 'open' });
-		this.#internals = this.attachInternals();
+	connectedCallback() {
 		const slot = document.createElement('slot');
 		slot.name = 'content';
 		slot.textContent = 'No content';
 		this.#shadow.append(slot);
 		this.#internals.role = 'button';
 		this.tabIndex = 0;
-		this.classList.add('btn', 'btn-primary');
+		this.#shadow.adoptedStyleSheets = [layers, customButton];
 
-		Promise.all([
-			new CSSStyleSheet().replace(`:host {
-				appearance: button;
-				background-color: ButtonFace;
-				color: ButtonText;
-				border: 1px solid ButtonBorder;
-				padding: 2px 4px;
-				border-radius: 4px;
-			}`),
-		]).then(sheets => this.#shadow.adoptedStyleSheets = sheets);
+		this.addEventListener('keydown', event => {
+			if (event.key === ' ' || event.key === 'Enter') {
+				event.preventDefault();
+				event.currentTarget.click();
+			}
+		});
+
+		this.addEventListener('click', ({ currentTarget }) => {
+			if (currentTarget.classList.contains('btn')) {
+				currentTarget.classList.remove('btn', 'btn-primary');
+			} else {
+				currentTarget.classList.add('btn', 'btn-primary');
+			}
+		});
 	}
 
 	attributeChangedCallback(name, oldVal, newVal) {
 		if (typeof newVal === 'string') {
-			this.#internals.states.add('--disabled');
+			this.#internals.states.add('disabled');
+			this.inert = true;
 		} else {
-			this.#internals.states.delete('--disabled');
+			this.#internals.states.delete('disabled');
+			this.inert = false;
 		}
 	}
 
