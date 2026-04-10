@@ -23,9 +23,9 @@ export const baseTheme = css`@layer base.aegisjsproject.theme {
 
 export const componentBase = css`@layer components.aegisjsproject.theme {
 	:host {
-		color: var(--aegis-color-light, ${light});
+		color: var(--aegis-color-light, ${dark});
 		color: light-dark(var(--aegis-color-light, ${dark}), var(--aegis-color-dark, ${light}));
-		background-color: var(--aegis-bg-light, ${dark});
+		background-color: var(--aegis-bg-light, ${light});
 		background-color: light-dark(var(--aegis-bg-light, ${light}), var(--aegis-bg-dark, ${dark}));
 		font-family: system-ui;
 	}
