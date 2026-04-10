@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.3.1] - 2026-04-10
+
+### Added
+- Add shared stylesheet for custom buttons
+
 ## [v0.3.0] - 2026-04-07
 
 ### Added
