@@ -1,5 +1,5 @@
 import { css } from '@aegisjsproject/parsers/css.js';
-import { componentBase, componentDarkTheme, componentLightTheme, componentBorder } from '../theme.js';
+import { componentBase, componentBorder } from '../theme.js';
 import { presentation } from '../presentation.js';
 import props from '../css/properties.css' with { type: 'css' };
 import theme from '../css/theme.css' with { type: 'css' };
@@ -59,7 +59,7 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 		slot.name = 'content';
 		slot.textContent = 'Hello, World!';
 		this.#shadow.adoptedStyleSheets = [
-			componentBase, componentBorder, componentDarkTheme, componentLightTheme, btn, reset,
+			componentBase, componentBorder, btn, reset,
 			css`:host {
 				padding: 0.7em 0.3em;
 				width: max-content;

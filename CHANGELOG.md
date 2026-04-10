@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.3.2] - 2026-04-10
+
+### Changed
+- Components now inherit `color-scheme` from the document or nearest `[data-theme]` ancestor,
+  replacing the deprecated `:host-context()` CSS pseudo-class.
+
+### Deprecated
+- `componentDarkTheme`, `componentLightTheme`, `darkTheme`, `lightTheme`. These exports remain
+  as disabled `CSSStyleSheet` stubs for backwards compatibility and will be removed in a future major release.
+
 ## [v0.3.1] - 2026-04-10
 
 ### Added
