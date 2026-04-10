@@ -34,9 +34,9 @@ class CSSStyleSheet {
 		if (this.disabled) {
 			return '';
 		} else if (typeof this.#media === 'string') {
-			return `@media (${this.#media}) {${this.#text}}`;
+			return `@media ${this.#media} {${this.#text.trim()}}`;
 		} else {
-			return this.#text;
+			return this.#text.trim();
 		}
 	}
 
@@ -80,7 +80,7 @@ globalThis.MediaQueryList = class MediaQueryList extends EventTarget {
 
 async function saveSheet(path) {
 	const module = await import(path);
-	const sheets = Object.values(module).filter(exp => exp instanceof CSSStyleSheet);
+	const sheets = Object.values(module).filter(exp => exp instanceof CSSStyleSheet && ! exp.disabled);
 
 	if (sheets.length !== 0) {
 		await writeFile(path.replace('./', './css/').replace('.js', '.css'), sheets.join('\n\n'));

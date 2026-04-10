@@ -1,49 +1,32 @@
 import { light, dark, gray } from './palette/bootstrap.js';
-import { css, createCSSParser } from '@aegisjsproject/parsers/css.js';
-
-const darkCSS = createCSSParser({ media: '(prefers-color-scheme: dark)' });
-const lightCSS = createCSSParser({ media: '(prefers-color-scheme: light)' });
+import { css } from '@aegisjsproject/parsers/css.js';
 
 export const baseTheme = css`@layer base.aegisjsproject.theme {
 	:root {
 		color-scheme: light dark;
-		color: var(--aegis-color-light, ${dark});
-		background-color: var(--aegis-bg-light, ${light});
 		font-family: var(--aegis-font, system-ui);
 	}
 
-	:root[data-theme="light"] {
-		color-scheme: light;
-		color: var(--aegis-color-light, ${dark});
-		background-color: var(--aegis-bg-light, ${light});
+	[data-theme="light"] {
+		color-scheme: only light;
 	}
 
-	:root[data-theme="dark"] {
-		color-scheme: dark;
-		color: var(--aegis-color-dark, ${light});
-		background-color: var(--aegis-bg-dark, ${dark});
+	[data-theme="dark"] {
+		color-scheme: only dark;
 	}
-}`;
 
-export const darkTheme = darkCSS`@layer base.aegisjsproject.theme {
-	:root:not([data-theme="light"]) {
-		color: var(--aegis-color-dark, ${light});
-		background-color: var(--aegis-bg-dark, ${dark});
-	}
-}`;
-
-export const lightTheme = lightCSS`@layer base.aegisjsproject.theme {
-	:root:not([data-theme="dark"]) {
-		color: var(--aegis-color-light, ${dark});
-		background-color: var(--aegis-bg-light, ${light});
+	:root, [data-theme] {
+		color: light-dark(var(--aegis-color-light, ${dark}), var(--aegis-color-dark, ${light}));
+		background-color: light-dark(var(--aegis-bg-light, ${light}), var(--aegis-bg-dark, ${dark}));
 	}
 }`;
 
 export const componentBase = css`@layer components.aegisjsproject.theme {
 	:host {
-		color-scheme: light dark;
 		color: var(--aegis-color-light, ${light});
+		color: light-dark(var(--aegis-color-light, ${dark}), var(--aegis-color-dark, ${light}));
 		background-color: var(--aegis-bg-light, ${dark});
+		background-color: light-dark(var(--aegis-bg-light, ${light}), var(--aegis-bg-dark, ${dark}));
 		font-family: system-ui;
 	}
 
@@ -51,28 +34,12 @@ export const componentBase = css`@layer components.aegisjsproject.theme {
 		display: block;
 	}
 
-	:host-context([data-theme="light"]):host(:not([theme="dark"])) {
-		color-scheme: light;
-		color: var(--aegis-color-light, ${dark});
-		background-color: var(--aegis-bg-light, ${light});
-	}
-
-	:host-context([data-theme="dark"]):host(:not([theme="light"])) {
-		color-scheme: dark;
-		color: var(--aegis-color-dark, ${light});
-		background-color: var(--aegis-bg-dark, ${dark});
-	}
-
 	:host([theme="light"]) {
-		color-scheme: light;
-		color: var(--aegis-color-light, ${dark});
-		background-color: var(--aegis-bg-light, ${light});
+		color-scheme: only light;
 	}
 
 	:host([theme="dark"]) {
-		color-scheme: dark;
-		color: var(--aegis-color-dark, ${light});
-		background-color: var(--aegis-bg-dark, ${dark});
+		color-scheme: only dark;
 	}
 }`;
 
@@ -80,45 +47,35 @@ export const componentBorder = css`@layer components.aegisjsproject.theme {
 	:host {
 		border-width: 1px;
 		border-style: solid;
-		border-color: var(--aegis-border-color-light, ${gray[2]});
+		border-color: light-dark(var(--aegis-border-color-light, ${gray[2]}), var(--aegis-border-color-dark, ${gray[6]}));
 		border-radius: var(--aegis-border-radius, 8px);
 	}
-
-	:host([theme="light"]) {
-		border-color: var(--aegis-border-color-light, ${gray[2]});
-	}
-
-	:host([theme="dark"]) {
-		border-color: var(--aegis-border-color-dark, ${gray[6]});
-	}
-
-	:host-context([data-theme="light"]):host(:not([theme="dark"])) {
-		border-color: var(--aegis-border-color-light, ${gray[2]});
-	}
-
-	:host-context([data-theme="dark"]):host(:not([theme="light"])) {
-		border-color: var(--aegis-border-color-dark, ${gray[6]});
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:host(:not([theme="light"])) {
-			border-color: var(--aegis-border-color-dark, ${gray[6]});
-		}
-	}
 }`;
 
-export const componentDarkTheme = darkCSS`@layer base.aegisjsproject.theme {
-	:host(:not([theme="light"])) {
-		color-scheme: dark;
-		color: var(--aegis-color-dark, ${light});
-		background-color: var(--aegis-bg-dark, ${dark});
-	}
-}`;
+/**
+ * @deprecated
+ *
+ * Preserving sheets just to avoid breaking on import. Now using `color-scheme` & `light-dark()` only.
+ */
+export const componentDarkTheme = new CSSStyleSheet({ disabled: true });
 
-export const componentLightTheme = lightCSS`@layer base.aegisjsproject.theme {
-	:host(:not([theme="dark"])) {
-		color-scheme: light;
-		color: var(--aegis-color-light, ${dark});
-		background-color: var(--aegis-bg-light, ${light});
-	}
-}`;
+/**
+ * @deprecated
+ *
+ * Preserving sheets just to avoid breaking on import. Now using `color-scheme` & `light-dark()` only.
+ */
+export const componentLightTheme = new CSSStyleSheet({ disabled: true });
+
+/**
+ * @deprecated
+ *
+ * Preserving sheets just to avoid breaking on import. Now using `color-scheme` & `light-dark()` only.
+ */
+export const darkTheme = new CSSStyleSheet({ disabled: true });
+
+/**
+ * @deprecated
+ *
+ * Preserving sheets just to avoid breaking on import. Now using `color-scheme` & `light-dark()` only.
+ */
+export const lightTheme = new CSSStyleSheet({ disabled: true });
