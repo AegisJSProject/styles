@@ -9,7 +9,7 @@ import {
 	btnLinkActive, linkColor,
 } from './palette/aegis.js';
 
-const DISABLED_STATE = SUPPORTS_CUSTOM_STATES ? ':state(--disabled)' : '._state--disabled';
+const DISABLED_STATE = SUPPORTS_CUSTOM_STATES ? ':state(disabled)' : '._state--disabled';
 
 const DISABLED = `:disabled, .disabled, ${DISABLED_STATE}`;
 const LAYER = 'components.aegisjsproject.button';
@@ -30,6 +30,10 @@ export const btn = css`@layer ${LAYER} {
 		border-radius: var(--aegis-btn-border-radius, 5px);
 		text-decoration: none;
 		transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out, color 150ms ease-in-out;
+	}
+
+	.btn${DISABLED} {
+		pointer-events: none;
 	}
 
 	.btn.btn-sm {
