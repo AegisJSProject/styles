@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.3.3] - 2026-04-27
+
+### Added
+- Add focus styles for custom buttons
+- Add `pointer-events: none` to disabled custom buttons
+
+### Changed
+- Custom buttons now use `:state(disabled)` instead of `:state(--disabled)`
+
 ## [v0.3.2] - 2026-04-10
 
 ### Changed

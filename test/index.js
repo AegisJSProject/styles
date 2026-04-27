@@ -72,6 +72,8 @@ customElements.define('test-el', class TestElement extends HTMLElement {
 customElements.define('test-button', class TestButton extends HTMLElement {
 	#shadow = this.attachShadow({ mode: 'open' });
 	#internals = this.attachInternals();
+	#oldTabIndex = NaN;
+	#controller;
 
 	connectedCallback() {
 		const slot = document.createElement('slot');
@@ -79,15 +81,29 @@ customElements.define('test-button', class TestButton extends HTMLElement {
 		slot.textContent = 'No content';
 		this.#shadow.append(slot);
 		this.#internals.role = 'button';
-		this.tabIndex = 0;
+		this.#controller = new AbortController();
+
+		if (! (this.hasAttribute('tabindex') || this.disabled)) {
+			this.tabIndex = 0;
+		}
+
 		this.#shadow.adoptedStyleSheets = [layers, customButton];
 
 		this.addEventListener('keydown', event => {
-			if (event.key === ' ' || event.key === 'Enter') {
+			if (event.key === 'Enter' && ! this.disabled) {
+				event.preventDefault();
+				event.currentTarget.click();
+			} else if (event.key === ' ' && ! this.disabled) {
+				event.preventDefault();
+			}
+		}, { signal: this.#controller.signal });
+
+		this.addEventListener('keyup', event => {
+			if (event.key === ' ' && ! this.disabled) {
 				event.preventDefault();
 				event.currentTarget.click();
 			}
-		});
+		}, { signal: this.#controller.signal });
 
 		this.addEventListener('click', ({ currentTarget }) => {
 			if (currentTarget.classList.contains('btn')) {
@@ -99,13 +115,28 @@ customElements.define('test-button', class TestButton extends HTMLElement {
 	}
 
 	attributeChangedCallback(name, oldVal, newVal) {
-		if (typeof newVal === 'string') {
-			this.#internals.states.add('disabled');
-			this.inert = true;
-		} else {
-			this.#internals.states.delete('disabled');
-			this.inert = false;
+		switch(name) {
+			case 'disabled':
+				if (typeof newVal === 'string') {
+					this.#oldTabIndex = this.hasAttribute('tabindex') ? this.tabIndex : 0;
+					this.tabIndex = -1;
+					this.#internals.states.add('disabled');
+					this.#internals.ariaDisabled = 'true';
+
+					if (this.ownerDocument.activeElement.isSameNode(this)) {
+						this.blur();
+					}
+				} else {
+					this.#internals.states.delete('disabled');
+					this.#internals.ariaDisabled = null;
+					this.tabIndex = Number.isNaN(this.#oldTabIndex) ? 0 : this.#oldTabIndex;
+				}
+				break;
 		}
+	}
+
+	disconnectedCallback() {
+		this.#controller.abort();
 	}
 
 	get disabled() {
