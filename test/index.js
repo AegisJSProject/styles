@@ -2,6 +2,7 @@ import { css } from '@aegisjsproject/parsers/css.js';
 import { componentBase, componentBorder } from '../theme.js';
 import { presentation } from '../presentation.js';
 import props from '../css/properties.css' with { type: 'css' };
+import palette from '../css/palette.css' with { type: 'css' };
 import theme from '../css/theme.css' with { type: 'css' };
 import btn from '../css/button.css' with { type: 'css' };
 import layers from '../css/layers.css' with { type: 'css' };
@@ -12,37 +13,59 @@ const { reset } = await import('@aegisjsproject/styles');
 
 // document.head.append(await sheetToLink(propertiesLegacy));
 
-document.adoptedStyleSheets = [layers, btn, reset, props, theme, presentation, animations];
+document.adoptedStyleSheets = [layers, palette, props, btn, reset, theme, presentation, animations];
 
 document.getElementById('toggle').addEventListener('click', async () => {
 	switch(document.documentElement.dataset.theme) {
 		case 'light':
-			document.documentElement.dataset.theme = 'dark';
+			await cookieStore.set({
+				name: 'theme',
+				value: 'dark',
+				path: '/test/',
+				sameSite: 'strict',
+				secure: true,
+			});
 			break;
 
 		case 'dark':
-			document.documentElement.dataset.theme = 'auto';
+			await cookieStore.set({
+				name: 'theme',
+				value: 'auto',
+				path: '/test/',
+				sameSite: 'strict',
+				secure: true,
+			});
 			break;
 
 		default:
-			document.documentElement.dataset.theme = 'light';
+			await cookieStore.set({
+				name: 'theme',
+				value: 'light',
+				path: '/test/',
+				sameSite: 'strict',
+				secure: true,
+			});
 	}
-
-	document.getElementById('cur').textContent = document.documentElement.dataset.theme;
-
-	await cookieStore.set({
-		name: 'theme',
-		value: document.documentElement.dataset.theme,
-		path: '/test/',
-		sameSite: 'strict',
-		secure: true,
-	});
 });
 
 cookieStore.get('theme').then(cookie => {
 	if (typeof cookie?.value === 'string') {
 		document.documentElement.dataset.theme = cookie.value;
 		document.getElementById('cur').textContent = document.documentElement.dataset.theme;
+	}
+});
+
+cookieStore.addEventListener('change', ({ changed, deleted }) => {
+	if (deleted.some(cookie => cookie.name === 'theme')) {
+		delete document.documentElement.dataset.theme;
+		document.getElementById('cur').textContent = 'auto';
+	} else {
+		const { value } = changed.find( cookie => cookie.name === 'theme') ?? {};
+
+		if (typeof value === 'string') {
+			document.documentElement.dataset.theme = value;
+			document.getElementById('cur').textContent = value;
+		}
 	}
 });
 
