@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.3.4] - 2026-05-28
+
+### Added
+- Add color palette with various shades of colors via `@property`
+
 ## [v0.3.3] - 2026-04-27
 
 ### Added
