@@ -1,6 +1,6 @@
 {
   "name": "@aegisjsproject/styles",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "Pre-made and reusable styles for `@aegisjsproject/core`",
   "keywords": [
     "aegis",
@@ -86,14 +86,17 @@
   },
   "homepage": "https://github.com/AegisJSProject/styles#readme",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^16.0.0",
-    "@shgysk8zer0/eslint-config": "^1.0.1",
-    "@shgysk8zer0/importmap": "^1.8.2",
-    "eslint": "^10.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@shgysk8zer0/eslint-config": "^1.1.0",
+    "@shgysk8zer0/importmap": "^1.10.1",
+    "eslint": "^10.5.0",
     "http-server": "^14.1.1",
-    "rollup": "^4.9.6"
+    "rollup": "^4.62.0"
   },
   "dependencies": {
-    "@aegisjsproject/parsers": "^0.1.6"
+    "@aegisjsproject/parsers": "^0.2.0"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   }
 }
