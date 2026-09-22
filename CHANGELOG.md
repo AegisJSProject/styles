@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.4.1] - 2026-09-22
+
+### Changed
+- Switch to using `:user-invalid` instead of outdated hacks around `:invalid`
+- Implement form styles using nesting
+
 ## [v0.4.0] - 2026-06-14
 
 ### Added
